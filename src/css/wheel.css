@@ -1,0 +1,52 @@
+.wheel-container {
+  height: 250px;
+  width: 250px;
+  background-color: grey;
+  margin: auto;
+  position: relative;
+}
+.wheel-ui {
+  height: 220px;
+  width: 210px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  left: 8.5%;
+}
+
+.blank {
+  background-color: grey;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+.control {
+  color: rgb(182, 181, 181);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+#menu {
+  position: absolute;
+  top: 10%;
+  left: 34%;
+}
+#forward {
+  position: absolute;
+  top: 42%;
+  right: 9%;
+}
+
+#reverse {
+  position: absolute;
+  top: 42%;
+  left: 9%;
+}
+#play-pause {
+  position: absolute;
+  bottom: 7%;
+  left: 40%;
+}
