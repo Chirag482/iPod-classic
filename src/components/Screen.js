@@ -6,20 +6,13 @@ import Display from "./Dsiplay";
 import Game from "./Game";
 
 class Screen extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showDisplay: true,
-      showGame: false,
-    };
-  }
   render() {
-    const { showDisplay, showGame } = this.state;
+    const { activeIndex, menuIndex } = this.props;
     return (
       <div className="screen" style={styles.screen}>
         <Navbar />
-        {showDisplay && <Display activeIndex={this.props.activeIndex} />}
-        {showGame && <Game />}
+        {menuIndex === 1 && <Display activeIndex={activeIndex} />}
+        {menuIndex === 2 && activeIndex === 2 && <Game />}
       </div>
     );
   }
