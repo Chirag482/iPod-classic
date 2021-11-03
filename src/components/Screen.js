@@ -7,7 +7,7 @@ class Screen extends Component {
     return (
       <div className="screen" style={styles.screen}>
         <Navbar />
-        <Display />
+        <Display activeIndex={this.props.activeIndex} />
       </div>
     );
   }

@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import ZingTouch from "zingtouch";
+
 import "../css/wheel.css";
 
 class Wheel extends Component {
-  constructor() {
-    super();
-    this.state = {
-      index: 1,
-    };
-  }
-
   //Bind components with zingtouch to control wheel rotation by 15deg
   componentDidMount() {
     var wheel = document.getElementById("wheel");
@@ -19,14 +13,11 @@ class Wheel extends Component {
     const forward = document.getElementById("forward");
     const reverse = document.getElementById("reverse");
     const playPauseToggle = document.getElementById("play-pause");
+
+    const { controlWheelRotation } = this.props;
+
     activeRegion.bind(wheel, "rotate", (e) => {
-      if (e.detail.distanceFromOrigin !== 0) {
-        var temp = Math.floor(Math.abs(e.detail.distanceFromOrigin) / 15);
-        this.setState({
-          index: (this.state.index + temp) % 4,
-        });
-      }
-      console.log(this.state.index);
+      controlWheelRotation(e);
     });
 
     activeRegion.bind(menu, "tap", (e) => {

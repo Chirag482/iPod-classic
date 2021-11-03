@@ -9,7 +9,7 @@ import "../css/display.css";
 import nowPlayingUrl from "../static/images/music.jpg";
 class Dsiplay extends Component {
   render() {
-    const activeIndex = 2;
+    const activeIndex = this.props.activeIndex;
     const menuItems = ["Now playing", "Music", "Games", "Settings"];
 
     return (
