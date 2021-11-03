@@ -12,6 +12,7 @@ class Case extends Component {
     };
     this.controlWheelRotation = this.controlWheelRotation.bind(this);
     this.controlCenterButton = this.controlCenterButton.bind(this);
+    this.controlMenuButton = this.controlMenuButton.bind(this);
   }
   controlWheelRotation(e) {
     if (e.detail.distanceFromOrigin !== 0) {
@@ -30,6 +31,13 @@ class Case extends Component {
       });
     }
   }
+  controlMenuButton(e) {
+    if (this.state.menuIndex > 0) {
+      this.setState({
+        menuIndex: this.state.menuIndex - 1,
+      });
+    }
+  }
   render() {
     return (
       <div className="case" style={styles.case}>
@@ -40,6 +48,7 @@ class Case extends Component {
         <Wheel
           controlWheelRotation={this.controlWheelRotation}
           controlCenterButton={this.controlCenterButton}
+          controlMenuButton={this.controlMenuButton}
         />
       </div>
     );

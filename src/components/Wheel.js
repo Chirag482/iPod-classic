@@ -14,14 +14,14 @@ class Wheel extends Component {
     const reverse = document.getElementById("reverse");
     const playPauseToggle = document.getElementById("play-pause");
 
-    const { controlWheelRotation } = this.props;
+    const { controlWheelRotation, controlMenuButton } = this.props;
 
     activeRegion.bind(wheel, "rotate", (e) => {
       controlWheelRotation(e);
     });
 
     activeRegion.bind(menu, "tap", (e) => {
-      console.log("Menu button clicked");
+      controlMenuButton(e);
     });
     activeRegion.bind(playPauseToggle, "tap", (e) => {
       console.log("Play-pause button clicked");
