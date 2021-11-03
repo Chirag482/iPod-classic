@@ -4,13 +4,15 @@ import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Display from "./Dsiplay";
 import Game from "./Game";
+import LockScreen from "./LockScreen";
 
 class Screen extends Component {
   render() {
     const { activeIndex, menuIndex } = this.props;
     return (
       <div className="screen" style={styles.screen}>
-        <Navbar />
+        <Navbar menuIndex={menuIndex} />
+        {menuIndex === 0 && <LockScreen />}
         {menuIndex === 1 && <Display activeIndex={activeIndex} />}
         {menuIndex === 2 && activeIndex === 2 && <Game />}
       </div>
