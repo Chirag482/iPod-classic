@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import "./Navbar";
+
+/*components*/
 import Navbar from "./Navbar";
 import Display from "./Dsiplay";
+import Game from "./Game";
+
 class Screen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showDisplay: true,
+      showGame: false,
+    };
+  }
   render() {
+    const { showDisplay, showGame } = this.state;
     return (
       <div className="screen" style={styles.screen}>
         <Navbar />
-        <Display activeIndex={this.props.activeIndex} />
+        {showDisplay && <Display activeIndex={this.props.activeIndex} />}
+        {showGame && <Game />}
       </div>
     );
   }
