@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./Navbar";
 import Navbar from "./Navbar";
-
+import Display from "./Dsiplay";
 class Screen extends Component {
   render() {
     return (
       <div className="screen" style={styles.screen}>
         <Navbar />
+        <Display />
       </div>
     );
   }

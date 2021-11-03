@@ -1,0 +1,8 @@
+ul .active {
+  background-color: rgb(114, 114, 240);
+  color: white;
+}
+.menu-img img {
+  height: 100%;
+  width: 100%;
+}
