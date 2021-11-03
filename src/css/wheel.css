@@ -4,6 +4,7 @@
   background-color: grey;
   margin: auto;
   position: relative;
+  cursor: pointer;
 }
 .wheel-ui {
   height: 220px;

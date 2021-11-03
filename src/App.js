@@ -1,9 +1,9 @@
-import Wheel from "./Wheel";
+import Case from "./components/Case";
 function App() {
   return (
     <div className="App">
       <header className="App-header">ipod</header>
-      <Wheel />
+      <Case />
     </div>
   );
 }

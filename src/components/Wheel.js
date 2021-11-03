@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ZingTouch from "zingtouch";
-import "./css/wheel.css";
+import "../css/wheel.css";
 
 class Wheel extends Component {
   constructor() {
