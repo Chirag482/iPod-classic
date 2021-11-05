@@ -8,6 +8,7 @@ import LockScreen from "./LockScreen";
 import Music from "./Music";
 import AllSongs from "./AllSongs";
 import NoData from "./NoData";
+import PlayingSong from "./PlayingSong";
 
 class Screen extends Component {
   render() {
@@ -17,12 +18,26 @@ class Screen extends Component {
       musicMenuActiveIndex,
       songsName,
       allSongsActiveIndex,
+      songImgUrl,
+      audio,
+      setSong,
+      changeActiveIndex,
+      isPlaying,
     } = this.props;
     return (
       <div className="screen" style={styles.screen}>
-        <Navbar menuIndex={menuIndex} />
+        <Navbar menuIndex={menuIndex} isPlaying={isPlaying} />
         {menuIndex === 0 && <LockScreen />}
         {menuIndex === 1 && <Display activeIndex={activeIndex} />}
+        {menuIndex === 2 && activeIndex === 0 && (
+          <PlayingSong
+            songName={songsName[allSongsActiveIndex]}
+            songImgUrl={songImgUrl[allSongsActiveIndex]}
+            audio={audio}
+            setSong={setSong}
+            changeActiveIndex={changeActiveIndex}
+          />
+        )}
         {menuIndex === 2 && activeIndex === 1 && (
           <Music musicMenuActiveIndex={musicMenuActiveIndex} />
         )}
@@ -43,6 +58,16 @@ class Screen extends Component {
         )}
         {menuIndex === 3 && musicMenuActiveIndex === 3 && (
           <NoData data={"Albums"} />
+        )}
+
+        {/* single songs screen */}
+        {menuIndex === 4 && (
+          <PlayingSong
+            songName={songsName[allSongsActiveIndex]}
+            songImgUrl={songImgUrl[allSongsActiveIndex]}
+            audio={audio}
+            setSong={setSong}
+          />
         )}
       </div>
     );

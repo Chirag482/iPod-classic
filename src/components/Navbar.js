@@ -3,14 +3,14 @@ import React from "react";
 function Navbar(props) {
   const today = new Date();
   var time = today.getHours() + ":" + today.getMinutes();
-  const { menuIndex } = props;
+  const { menuIndex, isPlaying } = props;
   return (
     <div className="navbar" style={styles.navbar}>
       <div className="label">Ipod</div>
       {menuIndex !== 0 && <div className="time">{time}</div>}
       <div className="charging">
-        <i class="fas fa-play"></i>
-        {/*<i class="fas fa-pause"></i> */}
+        {isPlaying && <i class="fas fa-play"></i>}
+        {!isPlaying && <i class="fas fa-pause"></i>}
         &nbsp;
         <i class="fas fa-battery-three-quarters"></i>
       </div>

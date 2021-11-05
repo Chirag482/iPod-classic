@@ -34,11 +34,19 @@ class Case extends Component {
       songImgUrl: [songImg1, songImg2, songImg3, songImg4, songImg5],
       allSongsActiveIndex: 0,
       musicMenuActiveIndex: 0,
+      audio: new Audio(song1),
+      isPlaying: false,
+      nowPlayingIndex: null,
     };
     this.angle = 0;
     this.controlWheelRotation = this.controlWheelRotation.bind(this);
     this.controlCenterButton = this.controlCenterButton.bind(this);
     this.controlMenuButton = this.controlMenuButton.bind(this);
+    this.playPauseToggle = this.playPauseToggle.bind(this);
+    this.setSong = this.setSong.bind(this);
+    this.changeActiveIndex = this.changeActiveIndex.bind(this);
+    this.seekSongReverse = this.seekSongReverse.bind(this);
+    this.seekSongForward = this.seekSongForward.bind(this);
   }
   controlWheelRotation(e) {
     const { menuIndex, activeIndex, musicMenuActiveIndex } = this.state;
@@ -87,6 +95,10 @@ class Case extends Component {
   }
   controlCenterButton(e) {
     const { activeIndex, menuIndex, musicMenuActiveIndex } = this.state;
+    if (menuIndex === 4) {
+      this.playPauseToggle();
+      return;
+    }
     /*In game component*/
     if (menuIndex === 2 && activeIndex === 2) {
       return;
@@ -107,6 +119,118 @@ class Case extends Component {
       });
     }
   }
+  playPauseToggle() {
+    if (this.state.menuIndex === 0) {
+      console.log("unlock first");
+      //notification to be added
+    } else {
+      if (this.state.isPlaying) {
+        this.state.audio.pause();
+        this.setState({
+          isPlaying: !this.state.isPlaying,
+        });
+      } else {
+        this.setState(
+          {
+            isPlaying: !this.state.isPlaying,
+            nowPlayingIndex: this.state.allSongsActiveIndex,
+          },
+          () => {
+            this.state.audio.play();
+          }
+        );
+      }
+    }
+
+    return;
+  }
+  seekSongReverse(e) {
+    if (this.state.menuIndex === 0) {
+      console.log("unlock first");
+      return;
+    }
+    if (e.detail.interval < 250) {
+      this.state.audio.pause();
+      let playingSongIndex = this.state.nowPlayingIndex;
+      if (playingSongIndex === 0) {
+        playingSongIndex = this.state.songsUrl.length - 1;
+      } else {
+        playingSongIndex--;
+      }
+      this.setState(
+        {
+          nowPlayingIndex: playingSongIndex,
+          audio: new Audio(this.state.songsUrl[playingSongIndex]),
+          allSongsActiveIndex: playingSongIndex,
+        },
+        () => {
+          this.state.audio.play();
+        }
+      );
+    } else if (e.detail.interval > 250 && e.detail.interval < 10000) {
+      const interval = e.detail.interval / 100;
+      this.setState((prevState) => {
+        prevState.audio.currentTime -= interval;
+        return prevState;
+      });
+    }
+  }
+  seekSongForward(e) {
+    if (this.state.menuIndex === 0) {
+      console.log("unlock first");
+      return;
+    }
+    if (e.detail.interval < 250) {
+      this.state.audio.pause();
+      let playingSongIndex = this.state.nowPlayingIndex;
+      if (playingSongIndex === this.state.songsUrl.length - 1) {
+        playingSongIndex = 0;
+      } else {
+        playingSongIndex++;
+      }
+      this.setState(
+        {
+          nowPlayingIndex: playingSongIndex,
+          audio: new Audio(this.state.songsUrl[playingSongIndex]),
+          allSongsActiveIndex: playingSongIndex,
+        },
+        () => {
+          this.state.audio.play();
+        }
+      );
+    } else if (e.detail.interval > 250 && e.detail.interval < 10000) {
+      const interval = e.detail.interval / 100;
+      this.setState((prevState) => {
+        prevState.audio.currentTime += interval;
+        return prevState;
+      });
+    }
+  }
+  setSong() {
+    if (this.state.nowPlayingIndex !== this.state.allSongsActiveIndex) {
+      this.state.audio.pause();
+
+      this.setState(
+        {
+          audio: new Audio(this.state.songsUrl[this.state.allSongsActiveIndex]),
+          isPlaying: true,
+          nowPlayingIndex: this.state.allSongsActiveIndex,
+        },
+        () => {
+          this.state.audio.play();
+        }
+      );
+    } else {
+      this.setState({
+        menuIndex: 4,
+      });
+    }
+  }
+  changeActiveIndex() {
+    this.setState({
+      activeIndex: 1,
+    });
+  }
   render() {
     return (
       <div className="case" style={styles.case}>
@@ -116,11 +240,20 @@ class Case extends Component {
           musicMenuActiveIndex={this.state.musicMenuActiveIndex}
           songsName={this.state.songsName}
           allSongsActiveIndex={this.state.allSongsActiveIndex}
+          songImgUrl={this.state.songImgUrl}
+          audio={this.state.audio}
+          setSong={this.setSong}
+          nowPlayingIndex={this.state.nowPlayingIndex}
+          changeActiveIndex={this.changeActiveIndex}
+          isPlaying={this.state.isPlaying}
         />
         <Wheel
           controlWheelRotation={this.controlWheelRotation}
           controlCenterButton={this.controlCenterButton}
           controlMenuButton={this.controlMenuButton}
+          playPauseToggle={this.playPauseToggle}
+          seekSongReverse={this.seekSongReverse}
+          seekSongForward={this.seekSongForward}
         />
       </div>
     );

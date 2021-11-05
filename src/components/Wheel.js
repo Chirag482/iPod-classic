@@ -12,9 +12,15 @@ class Wheel extends Component {
     const menu = document.getElementById("menu");
     const forward = document.getElementById("forward");
     const reverse = document.getElementById("reverse");
-    const playPauseToggle = document.getElementById("play-pause");
+    const playPauseToggleButton = document.getElementById("play-pause");
 
-    const { controlWheelRotation, controlMenuButton } = this.props;
+    const {
+      controlWheelRotation,
+      controlMenuButton,
+      playPauseToggle,
+      seekSongReverse,
+      seekSongForward,
+    } = this.props;
 
     activeRegion.bind(wheel, "rotate", (e) => {
       controlWheelRotation(e);
@@ -23,8 +29,8 @@ class Wheel extends Component {
     activeRegion.bind(menu, "tap", (e) => {
       controlMenuButton(e);
     });
-    activeRegion.bind(playPauseToggle, "tap", (e) => {
-      console.log("Play-pause button clicked");
+    activeRegion.bind(playPauseToggleButton, "tap", (e) => {
+      playPauseToggle();
     });
 
     const longTapGesture = new ZingTouch.Tap({
@@ -33,10 +39,10 @@ class Wheel extends Component {
       tolerance: 1,
     });
     activeRegion.bind(forward, longTapGesture, (e) => {
-      console.log("forward button clicked");
+      seekSongForward(e);
     });
     activeRegion.bind(reverse, longTapGesture, (e) => {
-      console.log("backward button pressed");
+      seekSongReverse(e);
     });
   }
   render() {
