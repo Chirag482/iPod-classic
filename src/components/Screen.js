@@ -9,6 +9,8 @@ import Music from "./Music";
 import AllSongs from "./AllSongs";
 import NoData from "./NoData";
 import PlayingSong from "./PlayingSong";
+import Settings from "./Settings";
+import Theme from "./Theme";
 
 class Screen extends Component {
   render() {
@@ -23,6 +25,8 @@ class Screen extends Component {
       setSong,
       changeActiveIndex,
       isPlaying,
+      settingsMenuActiveIndex,
+      themeMenuActiveIndex,
     } = this.props;
     return (
       <div className="screen" style={styles.screen}>
@@ -42,7 +46,9 @@ class Screen extends Component {
           <Music musicMenuActiveIndex={musicMenuActiveIndex} />
         )}
         {menuIndex === 2 && activeIndex === 2 && <Game />}
-
+        {menuIndex === 2 && activeIndex === 3 && (
+          <Settings settingsMenuActiveIndex={settingsMenuActiveIndex} />
+        )}
         {/* Music Menu */}
         {menuIndex === 3 && musicMenuActiveIndex === 0 && (
           <AllSongs
@@ -60,6 +66,19 @@ class Screen extends Component {
           <NoData data={"Albums"} />
         )}
 
+        {/* settings menu */}
+        {menuIndex === 3 && settingsMenuActiveIndex === 0 && (
+          <Theme themeMenuActiveIndex={themeMenuActiveIndex} />
+        )}
+        {menuIndex === 3 && settingsMenuActiveIndex === 1 && (
+          <NoData data={"Wheel Colour"} />
+        )}
+        {menuIndex === 3 && settingsMenuActiveIndex === 2 && (
+          <NoData data={"Wallpaper"} />
+        )}
+        {menuIndex === 3 && settingsMenuActiveIndex === 3 && (
+          <NoData data={"Other"} />
+        )}
         {/* single songs screen */}
         {menuIndex === 4 && (
           <PlayingSong

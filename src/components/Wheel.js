@@ -46,7 +46,7 @@ class Wheel extends Component {
     });
   }
   render() {
-    const { controlCenterButton } = this.props;
+    const { controlCenterButton, themeColor } = this.props;
     return (
       <div className="wheel-container">
         <div className="wheel-ui" id="wheel">
@@ -66,7 +66,12 @@ class Wheel extends Component {
             <i className="fas fa-fast-backward"></i>
           </div>
         </div>
-        <div className="blank" id="blank" onClick={controlCenterButton}></div>
+        <div
+          className="blank"
+          id="blank"
+          onClick={controlCenterButton}
+          style={{ backgroundColor: themeColor }}
+        ></div>
       </div>
     );
   }

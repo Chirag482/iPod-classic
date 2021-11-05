@@ -1,7 +1,7 @@
 .wheel-container {
   height: 250px;
   width: 250px;
-  background-color: grey;
+  background-color: transparent;
   margin: auto;
   position: relative;
   cursor: pointer;

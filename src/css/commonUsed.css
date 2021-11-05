@@ -26,3 +26,12 @@ li {
   width: fit-content;
   color: red;
 }
+.case {
+  height: 520px;
+  width: 300px;
+  margin: auto;
+  position: relative;
+  top: 60;
+  border: 5px solid black;
+  border-radius: 25px;
+}

@@ -8,35 +8,31 @@ import song1 from "../static/songs/BlackWhite.mp3";
 import song2 from "../static/songs/ChannaVeSufna.mp3";
 import song3 from "../static/songs/GallanTeriaQismat.mp3";
 import song4 from "../static/songs/Luna.mp3";
-import song5 from "../static/songs/RedRose.mp3";
 
 /*importing songs images*/
 import songImg1 from "../static/songsimg/Luna.jpg";
 import songImg2 from "../static/songsimg/Channa-Ve-Sufna.jpg";
 import songImg3 from "../static/songsimg/Gallan-Teria-Qismat.jpg";
 import songImg4 from "../static/songsimg/Luna.jpg";
-import songImg5 from "../static/songsimg/redRose.jpg";
 
+import "../css/commonUsed.css";
 class Case extends Component {
   constructor() {
     super();
     this.state = {
-      activeIndex: 1,
-      menuIndex: 1,
-      songsUrl: [song1, song2, song3, song4, song5],
-      songsName: [
-        "Black and White",
-        "Channa Ve",
-        "Gallan Teria",
-        "Luna",
-        "Red Rose",
-      ],
-      songImgUrl: [songImg1, songImg2, songImg3, songImg4, songImg5],
+      activeIndex: 0,
+      menuIndex: 0,
+      songsUrl: [song1, song2, song3, song4],
+      songsName: ["Black and White", "Channa Ve", "Gallan Teriya", "Luna"],
+      songImgUrl: [songImg1, songImg2, songImg3, songImg4],
       allSongsActiveIndex: 0,
-      musicMenuActiveIndex: 0,
+      musicMenuActiveIndex: null,
       audio: new Audio(song1),
       isPlaying: false,
       nowPlayingIndex: null,
+      settingsMenuActiveIndex: null,
+      themeMenuActiveIndex: null,
+      themeColor: "grey",
     };
     this.angle = 0;
     this.controlWheelRotation = this.controlWheelRotation.bind(this);
@@ -47,9 +43,37 @@ class Case extends Component {
     this.changeActiveIndex = this.changeActiveIndex.bind(this);
     this.seekSongReverse = this.seekSongReverse.bind(this);
     this.seekSongForward = this.seekSongForward.bind(this);
+    this.setTheme = this.setTheme.bind(this);
+  }
+  setTheme() {
+    const { themeColor, themeMenuActiveIndex } = this.state;
+    if (themeMenuActiveIndex === 0) {
+      this.setState({
+        themeColor: "gold",
+      });
+    } else if (themeMenuActiveIndex === 1) {
+      this.setState({
+        themeColor: "grey",
+      });
+    } else if (themeMenuActiveIndex === 2) {
+      this.setState({
+        themeColor: "rosybrown",
+      });
+    } else if (themeMenuActiveIndex === 3) {
+      this.setState({
+        themeColor: "red",
+      });
+    }
+    console.log(this.state.themeColor);
   }
   controlWheelRotation(e) {
-    const { menuIndex, activeIndex, musicMenuActiveIndex } = this.state;
+    const {
+      menuIndex,
+      activeIndex,
+      musicMenuActiveIndex,
+      themeMenuActiveIndex,
+      settingsMenuActiveIndex,
+    } = this.state;
 
     if (e.detail.distanceFromOrigin === 0) {
       this.angle = e.detail.angle;
@@ -79,6 +103,27 @@ class Case extends Component {
           musicMenuActiveIndex: (this.state.musicMenuActiveIndex + temp) % 4,
         });
       }
+    } else if (menuIndex === 2 && activeIndex === 3) {
+      if (temp === -1 && this.state.settingsMenuActiveIndex === 0) {
+        this.setState({
+          settingsMenuActiveIndex: 3,
+        });
+      } else {
+        this.setState({
+          settingsMenuActiveIndex:
+            (this.state.settingsMenuActiveIndex + temp) % 4,
+        });
+      }
+    } else if (menuIndex === 3 && settingsMenuActiveIndex === 0) {
+      if (temp === -1 && this.state.themeMenuActiveIndex === 0) {
+        this.setState({
+          themeMenuActiveIndex: 3,
+        });
+      } else {
+        this.setState({
+          themeMenuActiveIndex: (this.state.themeMenuActiveIndex + temp) % 4,
+        });
+      }
     } else if (menuIndex === 3 && musicMenuActiveIndex === 0) {
       if (temp === -1 && this.state.allSongsActiveIndex === 0) {
         this.setState({
@@ -95,6 +140,11 @@ class Case extends Component {
   }
   controlCenterButton(e) {
     const { activeIndex, menuIndex, musicMenuActiveIndex } = this.state;
+    console.log(menuIndex, this.state.themeMenuActiveIndex);
+    if (menuIndex === 3 && this.state.themeMenuActiveIndex !== null) {
+      this.setTheme();
+      return;
+    }
     if (menuIndex === 4) {
       this.playPauseToggle();
       return;
@@ -108,11 +158,34 @@ class Case extends Component {
         return;
       }
     }
+    if (menuIndex === 1 && activeIndex === 1) {
+      this.setState({
+        menuIndex: this.state.menuIndex + 1,
+        musicMenuActiveIndex: 0,
+      });
+      return;
+    }
+    if (menuIndex === 1 && activeIndex === 3) {
+      this.setState({
+        menuIndex: this.state.menuIndex + 1,
+        settingsMenuActiveIndex: 0,
+        themeMenuActiveIndex: 0,
+      });
+    }
     this.setState({
       menuIndex: this.state.menuIndex + 1,
     });
   }
   controlMenuButton(e) {
+    if (this.state.menuIndex === 2) {
+      this.setState({
+        menuIndex: 1,
+        musicMenuActiveIndex: null,
+        settingsMenuActiveIndex: null,
+        themeMenuActiveIndex: null,
+      });
+      return;
+    }
     if (this.state.menuIndex > 0) {
       this.setState({
         menuIndex: this.state.menuIndex - 1,
@@ -228,11 +301,14 @@ class Case extends Component {
   changeActiveIndex() {
     this.setState({
       activeIndex: 1,
+      musicMenuActiveIndex: this.state.allSongsActiveIndex,
+      settingsMenuActiveIndex: null,
+      themeMenuActiveIndex: null,
     });
   }
   render() {
     return (
-      <div className="case" style={styles.case}>
+      <div className="case" style={{ backgroundColor: this.state.themeColor }}>
         <Screen
           activeIndex={this.state.activeIndex}
           menuIndex={this.state.menuIndex}
@@ -245,6 +321,8 @@ class Case extends Component {
           nowPlayingIndex={this.state.nowPlayingIndex}
           changeActiveIndex={this.changeActiveIndex}
           isPlaying={this.state.isPlaying}
+          settingsMenuActiveIndex={this.state.settingsMenuActiveIndex}
+          themeMenuActiveIndex={this.state.themeMenuActiveIndex}
         />
         <Wheel
           controlWheelRotation={this.controlWheelRotation}
@@ -253,6 +331,7 @@ class Case extends Component {
           playPauseToggle={this.playPauseToggle}
           seekSongReverse={this.seekSongReverse}
           seekSongForward={this.seekSongForward}
+          themeColor={this.state.themeColor}
         />
       </div>
     );
