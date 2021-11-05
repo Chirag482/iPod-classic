@@ -5,7 +5,6 @@ import "../css/commonUsed.css";
 class AllSongs extends Component {
   render() {
     const { songsName, allSongsActiveIndex } = this.props;
-    console.log(allSongsActiveIndex);
     return (
       <div>
         <div className="innerMenuHeading">All Songs</div>

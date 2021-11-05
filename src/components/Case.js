@@ -35,30 +35,55 @@ class Case extends Component {
       allSongsActiveIndex: 0,
       musicMenuActiveIndex: 0,
     };
+    this.angle = 0;
     this.controlWheelRotation = this.controlWheelRotation.bind(this);
     this.controlCenterButton = this.controlCenterButton.bind(this);
     this.controlMenuButton = this.controlMenuButton.bind(this);
   }
   controlWheelRotation(e) {
     const { menuIndex, activeIndex, musicMenuActiveIndex } = this.state;
-    if (e.detail.distanceFromOrigin !== 0) {
-      console.log(e);
-      var temp = Math.floor(Math.abs(e.detail.angle) / 15);
-      if (menuIndex === 1) {
+
+    if (e.detail.distanceFromOrigin === 0) {
+      this.angle = e.detail.angle;
+    }
+    var temp = 0;
+    if (Math.abs(this.angle - e.detail.angle) > 15) {
+      temp = e.detail.angle < this.angle ? 1 : -1;
+      this.angle = Math.abs(e.detail.angle);
+    }
+    if (menuIndex === 1) {
+      if (temp === -1 && this.state.activeIndex === 0) {
+        this.setState({
+          activeIndex: 3,
+        });
+      } else {
         this.setState({
           activeIndex: (this.state.activeIndex + temp) % 4,
         });
-      } else if (menuIndex === 2 && activeIndex === 1) {
+      }
+    } else if (menuIndex === 2 && activeIndex === 1) {
+      if (temp === -1 && this.state.musicMenuActiveIndex === 0) {
+        this.setState({
+          musicMenuActiveIndex: 3,
+        });
+      } else {
         this.setState({
           musicMenuActiveIndex: (this.state.musicMenuActiveIndex + temp) % 4,
         });
-      } else if (menuIndex === 3 && musicMenuActiveIndex === 0) {
+      }
+    } else if (menuIndex === 3 && musicMenuActiveIndex === 0) {
+      if (temp === -1 && this.state.allSongsActiveIndex === 0) {
         this.setState({
-          allSongsActiveIndex: (this.state.allSongsActiveIndex + temp) % 4,
+          allSongsActiveIndex: this.state.songsName.length - 1,
+        });
+      } else {
+        this.setState({
+          allSongsActiveIndex:
+            (this.state.allSongsActiveIndex + temp) %
+            this.state.songsName.length,
         });
       }
     }
-    console.log(this.state.activeIndex);
   }
   controlCenterButton(e) {
     const { activeIndex, menuIndex, musicMenuActiveIndex } = this.state;
