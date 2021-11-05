@@ -220,11 +220,10 @@ class Case extends Component {
           this.state.audio.play();
         }
       );
-    } else {
-      this.setState({
-        menuIndex: 4,
-      });
     }
+    this.setState({
+      menuIndex: 4,
+    });
   }
   changeActiveIndex() {
     this.setState({
