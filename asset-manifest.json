@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/iPod-classic/static/css/main.542b0f18.chunk.css",
+    "main.js": "/iPod-classic/static/js/main.a3672f10.chunk.js",
+    "main.js.map": "/iPod-classic/static/js/main.a3672f10.chunk.js.map",
+    "runtime-main.js": "/iPod-classic/static/js/runtime-main.8fe9a951.js",
+    "runtime-main.js.map": "/iPod-classic/static/js/runtime-main.8fe9a951.js.map",
+    "static/js/2.1f3460de.chunk.js": "/iPod-classic/static/js/2.1f3460de.chunk.js",
+    "static/js/2.1f3460de.chunk.js.map": "/iPod-classic/static/js/2.1f3460de.chunk.js.map",
+    "index.html": "/iPod-classic/index.html",
+    "static/css/main.542b0f18.chunk.css.map": "/iPod-classic/static/css/main.542b0f18.chunk.css.map",
+    "static/js/2.1f3460de.chunk.js.LICENSE.txt": "/iPod-classic/static/js/2.1f3460de.chunk.js.LICENSE.txt",
+    "static/media/BlackWhite.b975a933.mp3": "/iPod-classic/static/media/BlackWhite.b975a933.mp3",
+    "static/media/Channa-Ve-Sufna.a0c789d8.jpg": "/iPod-classic/static/media/Channa-Ve-Sufna.a0c789d8.jpg",
+    "static/media/ChannaVeSufna.e2e977ac.mp3": "/iPod-classic/static/media/ChannaVeSufna.e2e977ac.mp3",
+    "static/media/Gallan-Teria-Qismat.16966802.jpg": "/iPod-classic/static/media/Gallan-Teria-Qismat.16966802.jpg",
+    "static/media/GallanTeriaQismat.da05f3fa.mp3": "/iPod-classic/static/media/GallanTeriaQismat.da05f3fa.mp3",
+    "static/media/Luna.43f2f3ef.jpg": "/iPod-classic/static/media/Luna.43f2f3ef.jpg",
+    "static/media/Luna.bbed6e50.mp3": "/iPod-classic/static/media/Luna.bbed6e50.mp3",
+    "static/media/game.39b5dc81.jpg": "/iPod-classic/static/media/game.39b5dc81.jpg",
+    "static/media/kamANS.5125f250.jpg": "/iPod-classic/static/media/kamANS.5125f250.jpg",
+    "static/media/settings.e0158f7b.png": "/iPod-classic/static/media/settings.e0158f7b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8fe9a951.js",
+    "static/js/2.1f3460de.chunk.js",
+    "static/css/main.542b0f18.chunk.css",
+    "static/js/main.a3672f10.chunk.js"
+  ]
+}
