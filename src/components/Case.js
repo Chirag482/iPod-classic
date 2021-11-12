@@ -46,7 +46,7 @@ class Case extends Component {
     this.setTheme = this.setTheme.bind(this);
   }
   setTheme() {
-    const { themeColor, themeMenuActiveIndex } = this.state;
+    const { themeMenuActiveIndex } = this.state;
     if (themeMenuActiveIndex === 0) {
       this.setState({
         themeColor: "gold",
@@ -71,7 +71,6 @@ class Case extends Component {
       menuIndex,
       activeIndex,
       musicMenuActiveIndex,
-      themeMenuActiveIndex,
       settingsMenuActiveIndex,
     } = this.state;
 
@@ -338,16 +337,4 @@ class Case extends Component {
   }
 }
 
-const styles = {
-  case: {
-    height: 520,
-    width: 300,
-    backgroundColor: "grey",
-    margin: "auto",
-    position: "relative",
-    top: 60,
-    border: "5px solid black",
-    borderRadius: 25,
-  },
-};
 export default Case;
