@@ -8,9 +8,14 @@
   margin-bottom: -20px;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
 ul {
   margin-top: 25px;
   margin-left: -40px;
+  height: 170px;
+  overflow: auto;
 }
 li {
   padding-left: 25px;

@@ -8,12 +8,14 @@ import song1 from "../static/songs/BlackWhite.mp3";
 import song2 from "../static/songs/ChannaVeSufna.mp3";
 import song3 from "../static/songs/GallanTeriaQismat.mp3";
 import song4 from "../static/songs/Luna.mp3";
+import song5 from "../static/songs/RedRose.mp3";
 
 /*importing songs images*/
 import songImg1 from "../static/songsimg/Luna.jpg";
 import songImg2 from "../static/songsimg/Channa-Ve-Sufna.jpg";
 import songImg3 from "../static/songsimg/Gallan-Teria-Qismat.jpg";
 import songImg4 from "../static/songsimg/Luna.jpg";
+import songImg5 from "../static/songsimg/redRose.jpg";
 
 import "../css/commonUsed.css";
 class Case extends Component {
@@ -22,9 +24,15 @@ class Case extends Component {
     this.state = {
       activeIndex: 0,
       menuIndex: 0,
-      songsUrl: [song1, song2, song3, song4],
-      songsName: ["Black and White", "Channa Ve", "Gallan Teriya", "Luna"],
-      songImgUrl: [songImg1, songImg2, songImg3, songImg4],
+      songsUrl: [song1, song2, song3, song4, song5],
+      songsName: [
+        "Black and White",
+        "Channa Ve",
+        "Gallan Teriya",
+        "Luna",
+        "Red Rose",
+      ],
+      songImgUrl: [songImg1, songImg2, songImg3, songImg4, songImg5],
       allSongsActiveIndex: 0,
       musicMenuActiveIndex: null,
       audio: new Audio(song1),
