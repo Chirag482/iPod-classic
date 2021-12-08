@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# _iPod-Classic_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An amazing classic device used to listen music and play games.
 
-## Available Scripts
+> View this app [here..](https://chirag482.github.io/iPod-classic/)
 
-In the project directory, you can run:
+> **Note**: This is work in progress in game section, feel free to jump in to contribute
 
-### `yarn start`
+## Preview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://user-images.githubusercontent.com/65730103/145166277-65a922df-e000-40bd-aab5-353893c2931f.mp4
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Basic Features
 
-### `yarn test`
+1. Fully working functionality for listening to music (Play/pause, forward, backward, next, previous)
+2. Working settings menu(Theme, Wheel Colour, Wallpaper, Other)
+3. Now playing Menu
+4. Lock Screen
+5. Notification Bar(current time, Music status(Playing/paused))
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Use/Control
 
-### `yarn build`
+1. To unlock screen you have to press center button.
+2. To navigate between menu items you need to rotate on track wheel.
+3. To select a menu option navigate to it and press center button.
+4. To Play and pause music press play/pause button or select Now Playing option.
+5. Short pressing on forward/backward will take you to next/previous track.
+6. Long pressing on forward/backward will seek the song in forward/backward.
+7. To move back press menu button.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## How to Install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Run this app by directly opening the [Link here](https://chirag482.github.io/iPod-classic/) or follow steps mentioned below to set up on local directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone this project
+2. Start by installing _npm_ **if you don't have it already**
+3. Navigate to project directory by
+> cd iPod-Classic
+4. run following command to install the dependencies
+> npm install
+5. run following command to start the Project
+> npm start
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Directory Structure
 
-## Learn More
+``` /src ``` - all code files
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+``` /src/components ``` - all react components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+``` /src/css ``` - all CSS files
 
-### Code Splitting
+``` /src/static ``` - all static files
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+``` /src/songs ``` - all audio files
